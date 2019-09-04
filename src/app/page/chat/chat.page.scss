@@ -1,0 +1,43 @@
+.image {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background: black;
+}
+
+p {
+    text-align: center;
+    margin: 0 auto;
+    background: wheat;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    .me {
+        position: relative;
+        margin: 20px 5px 0px;
+        max-width: 80%;
+        align-self: flex-end;
+        padding: 6px 10px 7px;
+        border-radius: 15px 15px 0;
+        background: darkcyan;
+        font-size: medium;
+        line-height: 1.4;
+    }
+    .you {
+        position: relative;
+        margin: 15px;
+        max-width: 80%;
+        align-self: flex-start;
+        padding: 6px 10px 7px;
+        border-radius: 15px 15px 15px 0;
+        background: skyblue;
+        font-size: medium;
+        line-height: 1.4;
+        .name {
+            font-size: small;
+            font-weight: bold;
+        }
+    }
+}

@@ -1,0 +1,101 @@
+<ion-header>
+    <ion-toolbar class="tittleText">
+        <ion-title>
+            Chat'Bot
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <!-- <div class="container-fluid">
+        <ion-item class="input-group-text">
+            <ion-label position="floating">Username </ion-label>
+            <ion-input [(ngModel)]="Username" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item class="input-group-text">
+            <ion-label position="floating">Email </ion-label>
+            <ion-input [(ngModel)]="Email" type="text"></ion-input>
+        </ion-item>
+
+
+        <ion-item class="input-group-text">
+            <ion-label position="floating"> Password </ion-label>
+            <ion-input [(ngModel)]="pdw" type="text"></ion-input>
+        </ion-item>
+
+
+    </div>
+    <div text-center>
+        <ion-button (click)="signup()">signup</ion-button>
+    </div>
+    <br>
+
+    <div text-center>
+        <b>or</b>
+        <br>
+        <ion-button (click)="goto_login()" fill="clear">login</ion-button>
+    </div> -->
+
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <label for="user" class="label">Email</label>
+                        <input id="user" type="text" class="input" [(ngModel)]="Email">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input id="pass" type="password" class="input" data-type="password" [(ngModel)]="pdw">
+                    </div>
+                    <div class="group">
+                        <input id="check" type="checkbox" class="check" checked>
+                        <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Sign In" (click)="login()">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a href="#forgot">Forgot Password?</a>
+                    </div>
+                </div>
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <label for="user" class="label">Username</label>
+                        <input type="text" class="input" [(ngModel)]="Username">
+                    </div>
+                    <!-- <div class="group">
+                        <label for="user" class="label">Full names</label>
+                        <input type="text" class="input" [(ngModel)]="users.fullName">
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Gender</label>
+                        <input type="text" class="input" [(ngModel)]="users.gender">
+                    </div> -->
+                    <div class="group">
+                        <label for="pass" class="label">Email Address</label>
+                        <input type="text" class="input" [(ngModel)]="Email">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input type="password" class="input" data-type="password" [(ngModel)]="pdw">
+                    </div>
+                    <!-- <div class="group">
+                        <label for="pass" class="label">Repeat Password</label>
+                        <input type="password" class="input" data-type="password" [(ngModel)]="confirmPassword">
+                    </div> -->
+                    <div class="group">
+                        <input type="submit" class="button" value="Sign Up" (click)="signup()">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ion-content>
