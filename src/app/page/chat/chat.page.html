@@ -26,10 +26,14 @@
 </ion-content>
 
 <ion-footer>
-    <ion-input placeholder="Type....." [(ngModel)]="text"></ion-input>
-    <ion-button (click)="Send('/chat')" icon-only slot="end">
-        <ion-icon name="send">
 
-        </ion-icon>
-    </ion-button>
+    <ion-item>
+        <ion-icon name="attach"></ion-icon>
+        <ion-input placeholder="Type....." [(ngModel)]="text"></ion-input>
+        <ion-button (click)="Send('/chat')" fill="clear" icon-only slot="end">
+            <ion-icon name="send">
+            </ion-icon>
+        </ion-button>
+    </ion-item>
+
 </ion-footer>

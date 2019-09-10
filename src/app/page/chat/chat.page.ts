@@ -29,7 +29,6 @@ export class ChatPage implements OnInit {
       this.chatref=this.fire.collection('chat', ref=>ref.orderBy('TimeStamp')).valueChanges();
      }
 
-
     
   ngOnInit() {
 

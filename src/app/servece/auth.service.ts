@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
@@ -18,8 +18,11 @@ export interface Post{
   providedIn: 'root'
 })
 export class AuthService {
+
+  private usersDoc: AngularFirestoreDocument<User>;
   private user:user
   private posts:Post
+  
   
   constructor(private afauth:AngularFireAuth,
     private anfs:AngularFirestore,private route:Router, private nav: NavController) {
@@ -31,6 +34,11 @@ export class AuthService {
         }
       })
      }
+
+     getUser(key){
+      this.usersDoc = this.anfs.doc<User>('chat/' + key);
+      return this.usersDoc.valueChanges();
+    }
 
     setUser(user:user){
       this.user=user

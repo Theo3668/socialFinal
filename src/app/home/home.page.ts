@@ -4,6 +4,7 @@ import{AngularFirestore} from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AuthService } from '../servece/auth.service';
+import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { AuthService } from '../servece/auth.service';
 })
 export class HomePage {
   Username:string;
+  Gender:string;
   Email:string;
   pdw:string
 
@@ -23,6 +25,20 @@ export class HomePage {
  signup(){
    this.afAuth.auth.createUserWithEmailAndPassword(this.Email,this.pdw).then(()=> {
      localStorage.setItem('userid',this.afAuth.auth.currentUser.uid);
+
+    //  ---------------
+    this.fire.collection('user').doc(this.afAuth.auth.currentUser.uid).set({
+      displayName:this.Username,
+      Gender:this.Gender,
+      uid: this.afAuth.auth.currentUser.uid,
+      TimeStamp:firestore.FieldValue.serverTimestamp(),
+      Email:this.Email,
+      photoURL:''
+    }).catch(error=>{
+      alert(error.message)
+    })
+    //  ---------------
+
      this.afAuth.auth.currentUser.updateProfile({
        displayName:this.Username,
        photoURL:''
