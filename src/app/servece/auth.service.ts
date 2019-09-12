@@ -36,9 +36,15 @@ export class AuthService {
      }
 
      getUser(key){
-      this.usersDoc = this.anfs.doc<User>('chat/' + key);
+      this.usersDoc = this.anfs.doc<User>('user/' + key);
       return this.usersDoc.valueChanges();
     }
+
+    update(User, key)
+ {
+    this.usersDoc = this.anfs.doc<User>('user/'+ key);
+    this.usersDoc.update(User);
+ }
 
     setUser(user:user){
       this.user=user

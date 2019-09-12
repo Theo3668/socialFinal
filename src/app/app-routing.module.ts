@@ -8,7 +8,11 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   { path: 'login', component: LoginPage, children:[{ path: 'chat', loadChildren: './page/chat/chat.module#ChatPageModule',canActivate:[GuardGuard ] },
                                                    { path: 'profile', loadChildren: './page/profile/profile.module#ProfilePageModule' },
-] },
+                                                   { path: 'users', loadChildren: './page/users/users.module#UsersPageModule' },
+] },  { path: 'update', loadChildren: './page/update/update.module#UpdatePageModule' },
+
+  
+
   
 ];
 

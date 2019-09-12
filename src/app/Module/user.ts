@@ -1,6 +1,9 @@
 class User {
     key?: string;
-    userName: string;
-    fullName: string;
-    gender: string;
+    Email: string;
+    Gender: string;
+    TimeStamp: string;
+    displayName: string;
+    photoURL: string;
+    uid: string;
 }

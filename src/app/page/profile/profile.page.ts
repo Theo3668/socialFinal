@@ -14,26 +14,27 @@ export class ProfilePage implements OnInit {
 
   username;
   email;
+  userList
+  user = {} as User;
 
   constructor(private userServ: AuthService, private router: Router, private afAuth: AngularFireAuth, private angularfire:AngularFirestore) {
     
+    // this.username = this.afAuth.auth.currentUser.displayName;
+    // this.email = this.afAuth.auth.currentUser.email;
     const key = this.afAuth.auth.currentUser.uid;
-    this.username = this.afAuth.auth.currentUser.displayName;
-    this.email = this.afAuth.auth.currentUser.email;
-    
+
+    this.userServ.getUser(key).subscribe( data =>{
+    this.userList = data;
+    console.log(data)
+    })
+   }
+
+   onEdit(userList){
+    this.router.navigate(['/update'], {queryParams:{key: userList.key, Gender: userList.Gender, displayName: userList.displayName, photoURL: userList.photoURL}})
    }
 
   ngOnInit() {
-    var user = firebase.auth().currentUser;
-    var name, email, photoUrl, uid, emailVerified;
-
-  if (user != null) {
-      name = user.displayName;
-      email = user.email;
-      photoUrl = user.photoURL;
-      emailVerified = user.emailVerified;
-      uid = user.uid; 
-    }
+    
   }
 
 }

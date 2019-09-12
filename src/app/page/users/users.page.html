@@ -1,0 +1,17 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-title>users</ion-title>
+    </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+    <ion-item *ngFor="let items of itemList " (click)="updateItem(items)">
+        <ion-label>
+            {{ items.displayName }}
+        </ion-label>
+    </ion-item>
+
+
+
+</ion-content>

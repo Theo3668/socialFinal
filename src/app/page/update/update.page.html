@@ -1,0 +1,32 @@
+<ion-header color="light">
+    <!-- <ion-toolbar>
+        <ion-title>update</ion-title>
+    </ion-toolbar> -->
+</ion-header>
+
+<ion-content color="light">
+
+    <ion-item color="light">
+        <ion-icon name="arrow-back" (click)="onBack()"></ion-icon>
+    </ion-item>
+
+    <ion-item color="light">
+        <ion-label position="fixed">User name:</ion-label>
+        <ion-input clearInput [(ngModel)]="User.displayName"></ion-input>
+    </ion-item>
+
+    <ion-item color="light">
+        <ion-label position="fixed">Profile pic:</ion-label>
+        <ion-input clearInput [(ngModel)]="User.photoURL"></ion-input>
+    </ion-item>
+
+    <ion-item color="light">
+        <ion-label position="fixed">Gender:</ion-label>
+        <ion-input clearInput [(ngModel)]="User.Gender"></ion-input>
+    </ion-item>
+
+
+    <ion-button fill="solid" expand="block" color="primary" (click)="onUpdate(User, User.key)">Update!</ion-button>
+
+
+</ion-content>
