@@ -17,6 +17,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginPage } from './page/login/login.page';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAF-0wsmuzTM0xohlqa-zSDuIm176AIjR0",
@@ -33,7 +34,7 @@ const firebaseConfig = {
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
    HttpClientModule, AngularFireModule.initializeApp(firebaseConfig),
-   AngularFireAuthModule,HttpClientModule,AngularFirestoreModule.enablePersistence()],
+   AngularFireAuthModule,AngularFireStorageModule,HttpClientModule,AngularFirestoreModule.enablePersistence()],
   providers: [
     StatusBar,
     SplashScreen,

@@ -28,7 +28,7 @@ export class AuthService {
     private anfs:AngularFirestore,private route:Router, private nav: NavController) {
       afauth.auth.onAuthStateChanged((user)=>{
         if(user){
-          this.nav.navigateRoot("home");
+          this.nav.navigateRoot("login");
         }else{
           this.nav.navigateRoot("");
         }
@@ -40,11 +40,10 @@ export class AuthService {
       return this.usersDoc.valueChanges();
     }
 
-    update(User, key)
- {
+    update(User, key){
     this.usersDoc = this.anfs.doc<User>('user/'+ key);
     this.usersDoc.update(User);
- }
+   }
 
     setUser(user:user){
       this.user=user

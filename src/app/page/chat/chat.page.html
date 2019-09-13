@@ -4,7 +4,7 @@
     </ion-toolbar>
 </ion-header> -->
 
-<ion-content>
+<ion-content color="light">
 
     <p>{{Username}}
     </p>
@@ -25,9 +25,9 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer color="light">
 
-    <ion-item>
+    <ion-item color="light">
         <ion-icon name="attach"></ion-icon>
         <ion-input placeholder="Type....." [(ngModel)]="text"></ion-input>
         <ion-button (click)="Send('/chat')" fill="clear" icon-only slot="end">

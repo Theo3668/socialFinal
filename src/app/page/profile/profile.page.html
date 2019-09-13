@@ -4,21 +4,26 @@
   </ion-toolbar> -->
 </ion-header>
 
-<ion-content>
+<ion-content color="light">
 
     <!-- <ion-item>
         <ion-icon name="arrow-back" (click)="onBack()"></ion-icon>
     </ion-item> -->
 
-    <ion-item>
+    <div padding text-center>
+        <img src="{{photoURL}}" accept=".png,.jpg">
+        <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+    </div>
+
+    <ion-item color="light">
         <ion-label>Username:</ion-label>
         {{userList?.displayName}}
     </ion-item>
-    <ion-item>
+    <ion-item color="light">
         <ion-label>Email:</ion-label>
         {{userList?.Email}}
     </ion-item>
-    <ion-item>
+    <ion-item color="light">
         <ion-label>Gender:</ion-label>
         {{userList?.Gender}}
     </ion-item>

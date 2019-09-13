@@ -12,12 +12,9 @@ export class UpdatePage implements OnInit {
 
     User = {
       key: '',
-      Email: '',
       Gender: '',
-      TimeStamp: '',
       displayName: '',
       photoURL: '',
-      uid: '',
   }
 
   constructor(private route:ActivatedRoute, private nav:Router, private service: AuthService, private afAuth: AngularFireAuth) { }
