@@ -10,6 +10,7 @@ const routes: Routes = [
                                                    { path: 'profile', loadChildren: './page/profile/profile.module#ProfilePageModule' },
                                                    { path: 'users', loadChildren: './page/users/users.module#UsersPageModule' },
 ] },  { path: 'update', loadChildren: './page/update/update.module#UpdatePageModule' },
+  { path: 'message', loadChildren: './page/message/message.module#MessagePageModule' },
 
   
 

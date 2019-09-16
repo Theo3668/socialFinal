@@ -28,7 +28,7 @@ export class AuthService {
     private anfs:AngularFirestore,private route:Router, private nav: NavController) {
       afauth.auth.onAuthStateChanged((user)=>{
         if(user){
-          this.nav.navigateRoot("login");
+          this.nav.navigateRoot("home");
         }else{
           this.nav.navigateRoot("");
         }

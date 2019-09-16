@@ -37,12 +37,12 @@ export class ProfilePage implements OnInit {
     
     // this.username = this.afAuth.auth.currentUser.displayName;
     // this.email = this.afAuth.auth.currentUser.email;
-    // const uid = this.afAuth.auth.currentUser.uid;
+    const uid = this.afAuth.auth.currentUser.uid;
 
-    // this.userServ.getUser(key).subscribe( data =>{
-    // this.userList = data;
-    // console.log(data)
-    // })
+    this.userServ.getUser(uid).subscribe( data =>{
+    this.userList = data;
+    console.log(data)
+    })
     this.afAuth.auth.currentUser.photoURL;
     this.name=afAuth.auth.currentUser.displayName;
 
@@ -77,6 +77,10 @@ export class ProfilePage implements OnInit {
 
    onEdit(userList){
     this.router.navigate(['/update'], {queryParams:{key: userList.key, Gender: userList.Gender, displayName: userList.displayName, photoURL: userList.photoURL}})
+   }
+   async logout(){
+     await this.afAuth.auth.signOut();
+     return this.router.navigate(['/']);
    }
 
   ngOnInit() {

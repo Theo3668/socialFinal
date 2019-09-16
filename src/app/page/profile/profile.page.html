@@ -11,8 +11,8 @@
     </ion-item> -->
 
     <div padding text-center>
-        <img src="{{photoURL}}" accept=".png,.jpg">
-        <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+        <img src="{{photoURL}}">
+        <input type="file" (change)="upload($event)" />
     </div>
 
     <ion-item color="light">
@@ -29,5 +29,7 @@
     </ion-item>
 
     <ion-button fill="solid" expand="block" color="dark" (click)="onEdit(userList)">Update user!</ion-button>
+    <p><b>OR</b></p>
+    <ion-button fill="outline" expand="block" (click)="logout()">Logout!</ion-button>
 
 </ion-content>
