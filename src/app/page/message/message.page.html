@@ -1,9 +1,40 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>message</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            <p>{{items.displayName}}
+            </p>
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="light">
+
+
+
+
+    <div class="items" *ngFor="let items of chat | async ">
+        <div class="me" *ngIf="uid == items.UserID && items.sendto == singleUser">
+            ME: {{items.Message}}
+        </div>
+
+        <div class="you" *ngIf="items.sendto == uid &&  items.UserID == singleUser">
+
+            YOU: {{items.Message}}
+        </div>
+    </div>
+
 
 </ion-content>
+
+<ion-footer color="light">
+
+    <ion-item color="light">
+        <ion-icon name="attach"></ion-icon>
+        <ion-input placeholder="Type....." [(ngModel)]="textTO"></ion-input>
+        <ion-button (click)="Send()" fill="clear" icon-only slot="end">
+            <ion-icon name="send">
+            </ion-icon>
+        </ion-button>
+    </ion-item>
+
+</ion-footer>

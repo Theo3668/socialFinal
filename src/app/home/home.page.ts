@@ -16,7 +16,7 @@ export class HomePage {
   Gender:string;
   Email:string;
   pdw:string
-
+  userII:string;
   constructor(private afAuth: AngularFireAuth, private fire:AngularFirestore,
     private alert:AlertController,private route:Router,
     private chatapp:AuthService, private nav:NavController) {}
@@ -30,7 +30,7 @@ export class HomePage {
     this.fire.collection('user').doc(this.afAuth.auth.currentUser.uid).set({
       displayName:this.Username,
       Gender:this.Gender,
-      uid: this.afAuth.auth.currentUser.uid,
+      userII: this.afAuth.auth.currentUser.uid,
       TimeStamp:firestore.FieldValue.serverTimestamp(),
       Email:this.Email,
       photoURL:''

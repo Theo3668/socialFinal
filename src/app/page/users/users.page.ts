@@ -11,8 +11,8 @@ import { AuthService } from 'src/app/servece/auth.service';
   styleUrls: ['./users.page.scss'],
 })
 export class UsersPage implements OnInit {
-
-  uid: string;
+  userII
+  // uid: string;
   chatRef: any;
   itemList: any;
 
@@ -20,11 +20,11 @@ export class UsersPage implements OnInit {
     private alert:AlertController,private route:Router,
     private chatapp:AuthService, private nav:NavController) {
 
-      this.uid =this.afAuth.auth.currentUser.uid;
+      // this.uid =this.afAuth.auth.currentUser.uid;
       this.chatRef = this.fire.collection('user').snapshotChanges().subscribe(data =>{
       this.itemList = data.map ( e => {
         return{
-          displayName: e.payload.doc.id,
+          key: e.payload.doc.id,
           ...e.payload.doc.data(),
         } as User;
       });
@@ -32,6 +32,9 @@ export class UsersPage implements OnInit {
      })
     }
 
+    sendTo(items){
+      this.route.navigate(['/message'], {queryParams:{uid: items.userII, displayName: items.displayName, photoURL: items.photoURL}})    
+    }
   ngOnInit() {
   }
 

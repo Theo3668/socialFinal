@@ -6,10 +6,12 @@
 
 <ion-content color="light">
 
-    <ion-item *ngFor="let items of itemList " color="light">
-        <ion-label>
-            {{ items.displayName }}
-        </ion-label>
+    <ion-item *ngFor="let items of itemList " (click)="sendTo(items)" color="light">
+        <div *ngIf="items.userII != uid">
+            <ion-label>
+                {{ items.displayName }}
+            </ion-label>
+        </div>
     </ion-item>
 
 
