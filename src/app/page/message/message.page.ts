@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from 'src/app/servece/auth.service';
@@ -24,7 +24,7 @@ export class MessagePage implements OnInit {
   textTO: string;
   sendto:any;
   chat: any;
-  constructor(private fire:AngularFirestore, private chatapp:AuthService,
+  constructor(private fire:AngularFirestore, private nav:Router,private chatapp:AuthService,
     private route:ActivatedRoute,  private afAuth: AngularFireAuth) {
     this.route.queryParams.subscribe(params => {
       console.log(params)
@@ -57,6 +57,10 @@ export class MessagePage implements OnInit {
       this.textTO="";
     }
     
+  }
+
+  onBack(){
+    this.nav.navigateByUrl("login/users");
   }
 
 }

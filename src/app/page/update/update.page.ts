@@ -15,6 +15,7 @@ export class UpdatePage implements OnInit {
       Gender: '',
       displayName: '',
       photoURL: '',
+      userII: '',
   }
 
   constructor(private route:ActivatedRoute, private nav:Router, private service: AuthService, private afAuth: AngularFireAuth) { }
@@ -23,8 +24,8 @@ export class UpdatePage implements OnInit {
     this.route.queryParams.subscribe(params => {
       console.log(params)
 
-      this.User.key = params.key
-      console.log(this.User.key),
+      this.User.userII = params.uid
+      console.log(this.User.userII),
 
       this.User.Gender = params.Gender
       console.log(this.User.Gender),
@@ -39,9 +40,7 @@ export class UpdatePage implements OnInit {
   }
 
   onUpdate(User){
-    const key = this.afAuth.auth.currentUser.uid;
-
-    this.service.update(User, User.key);
+    this.service.update(User, User.userII);
     alert("user updated");
   }
 

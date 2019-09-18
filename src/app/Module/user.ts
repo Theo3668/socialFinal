@@ -5,5 +5,5 @@ class User {
     TimeStamp: string;
     displayName: string;
     photoURL: string;
-    uid: string;
+    userII: string;
 }

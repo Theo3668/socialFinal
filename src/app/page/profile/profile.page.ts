@@ -76,7 +76,7 @@ export class ProfilePage implements OnInit {
   } 
 
    onEdit(userList){
-    this.router.navigate(['/update'], {queryParams:{key: userList.key, Gender: userList.Gender, displayName: userList.displayName, photoURL: userList.photoURL}})
+    this.router.navigate(['/update'], {queryParams:{uid: this.afAuth.auth.currentUser.uid, Gender: userList.Gender, displayName: userList.displayName, photoURL: userList.photoURL}})
    }
    async logout(){
      await this.afAuth.auth.signOut();

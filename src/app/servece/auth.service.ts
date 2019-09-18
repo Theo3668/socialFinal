@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import * as firebase from 'firebase';
 
 interface user{
   name: string;
@@ -34,6 +35,10 @@ export class AuthService {
         }
       })
      }
+
+     async  Anonymous(): Promise <firebase.auth.UserCredential> {
+      return await firebase.auth().signInAnonymously();
+    }
 
      getUser(key){
       this.usersDoc = this.anfs.doc<User>('user/' + key);

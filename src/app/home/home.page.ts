@@ -54,6 +54,21 @@ alert(err.message)
    })
  }
 
+ privateLogin(){
+  this.chatapp.Anonymous().then(()=>{
+    this.afAuth.auth.currentUser.updateProfile({
+      displayName:"private user",
+      photoURL:'' 
+    })
+     this.fire.collection('user').doc(this.afAuth.auth.currentUser.uid).set({
+      displayName:"private user",
+      userII: this.afAuth.auth.currentUser.uid,
+      Timestamp:firestore.FieldValue.serverTimestamp(),
+      photoURL:''})
+  })
+  this.nav.navigateForward('/login/chat')
+ }
+
  login()
  {
  this.afAuth.auth.signInWithEmailAndPassword(this.Email,this.pdw).then(()=>{
