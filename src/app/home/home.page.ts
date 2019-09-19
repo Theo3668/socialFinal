@@ -17,15 +17,25 @@ export class HomePage {
   Email:string;
   pdw:string
   userII:string;
+
+  isForgotPassword: boolean;
+  hide: boolean = true;
+  responseMessageType: string = '';
+  responseMessage: string = '';
+
   constructor(private afAuth: AngularFireAuth, private fire:AngularFirestore,
     private alert:AlertController,private route:Router,
-    private chatapp:AuthService, private nav:NavController) {}
+    private chatapp:AuthService, private nav:NavController) {
+
+      this.isForgotPassword = false;
+    }
 
 
  signup(){
    this.afAuth.auth.createUserWithEmailAndPassword(this.Email,this.pdw).then(()=> {
      localStorage.setItem('userid',this.afAuth.auth.currentUser.uid);
 
+     this.isForgotPassword = false;
     //  ---------------
     this.fire.collection('user').doc(this.afAuth.auth.currentUser.uid).set({
       displayName:this.Username,
@@ -78,7 +88,26 @@ alert(err.message)
  })
  }
 
-// goto_login(){
-//   this.nav.navigateForward('/login');
-// }
+ showMessage(type, msg) {
+  this.responseMessageType = type;
+  this.responseMessage = msg;
+  setTimeout(() => {
+    this.responseMessage = "";
+  }, 2000);
+}
+
+ forgotPassword() {
+  this.chatapp.sendPasswordResetEmail(this.Email)
+    .then(res => {
+      console.log(res);
+      this.isForgotPassword = false;
+      this.showMessage("success", "Please Check Your Email");
+    }, err => {
+      this.showMessage("danger", err.message);
+    });
+  }
+
+  ngIfCtrl(){
+    this.hide = !this.hide;
+  }
 }

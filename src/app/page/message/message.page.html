@@ -8,18 +8,23 @@
 </ion-header>
 
 <ion-content color="light">
-
+    <!-- <div padding text-center>
+                <img src="{{photoURL}}">
+                <input type="file" (change)="upload($event)" />
+            </div> -->
 
 
 
     <div class="items" *ngFor="let items of chat | async ">
         <div class="me" *ngIf="uid == items.UserID && items.sendto == singleUser">
             ME: {{items.Message}}
+            <img src="{{items.photoURL}}">
         </div>
 
         <div class="you" *ngIf="items.sendto == uid &&  items.UserID == singleUser">
 
             YOU: {{items.Message}}
+            <img src="{{items.photoURL}}">
         </div>
     </div>
 
@@ -29,7 +34,10 @@
 <ion-footer color="light">
 
     <ion-item color="light">
-        <ion-icon name="attach"></ion-icon>
+        <ion-button color="none" (click)="presentActionSheet()">
+            <ion-icon name="attach"></ion-icon>
+        </ion-button>
+
         <ion-input placeholder="Type....." [(ngModel)]="textTO"></ion-input>
         <ion-button (click)="Send()" fill="clear" icon-only slot="end">
             <ion-icon name="send">

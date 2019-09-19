@@ -164,6 +164,10 @@ a {
     background: rgba(255, 255, 255, .1);
 }
 
+.forgotPass {
+    background: rgba(255, 255, 255, .1);
+}
+
 .login-form .group label .icon:before,
 .login-form .group label .icon:after {
     content: '';
@@ -219,4 +223,9 @@ a {
 
 .foot-lnk {
     text-align: center;
+}
+
+.white {
+    color: white;
+    font: 12px 'Open Sans', sans-serif;
 }

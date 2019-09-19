@@ -16,13 +16,11 @@
     </ion-item>
 
     <ion-item color="light">
-        <ion-label position="fixed">Profile pic:</ion-label>
-        <ion-input clearInput [(ngModel)]="User.photoURL"></ion-input>
-    </ion-item>
-
-    <ion-item color="light">
-        <ion-label position="fixed">Gender:</ion-label>
-        <ion-input clearInput [(ngModel)]="User.Gender"></ion-input>
+        <ion-label>Gender</ion-label>
+        <ion-select placeholder="select one" [(ngModel)]="User.Gender">
+            <ion-select-option value="female">Female</ion-select-option>
+            <ion-select-option value="male">Male</ion-select-option>
+        </ion-select>
     </ion-item>
 
 

@@ -50,6 +50,10 @@ export class AuthService {
     this.usersDoc.update(User);
    }
 
+   async sendPasswordResetEmail(passwordResetEmail: string) {
+    return await this.afauth.auth.sendPasswordResetEmail(passwordResetEmail);
+  }
+
     setUser(user:user){
       this.user=user
          
