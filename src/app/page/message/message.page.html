@@ -34,15 +34,31 @@
 <ion-footer color="light">
 
     <ion-item color="light">
-        <ion-button color="none" (click)="presentActionSheet()">
-            <ion-icon name="attach"></ion-icon>
-        </ion-button>
+        <!-- <ion-button color="none" (click)="presentActionSheet()">
+            <ion-icon name="camera" ></ion-icon>
+        </ion-button> -->
 
+        <div class="image-upload" float-right>
+            <label for="file-input" (change)="upload($event)">
+                    <ion-icon name="attach"> </ion-icon>
+              </label>
+        </div>
+        <div class="image-upload" float-right>
+            <label for="file-input">
+                <ion-icon class="input" name="attach"> </ion-icon>
+            <input id="file-input" class="input" type="file" (change)="upload($event)" />
+           </label>
+        </div>
         <ion-input placeholder="Type....." [(ngModel)]="textTO"></ion-input>
-        <ion-button (click)="Send()" fill="clear" icon-only slot="end">
-            <ion-icon name="send">
-            </ion-icon>
-        </ion-button>
+        <ion-buttons>
+            <ion-button (click)="Send()" fill="clear" icon-only slot="end">
+                <ion-icon name="send">
+                </ion-icon>
+            </ion-button>
+            <ion-button (click)="presentActionSheet()">
+                <ion-icon name="camera"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-item>
 
 </ion-footer>

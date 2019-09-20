@@ -7,6 +7,7 @@ import * as firebase from 'firebase';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { ActionSheetController } from '@ionic/angular';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-message',
@@ -44,7 +45,7 @@ export class MessagePage implements OnInit {
   ref;
   downloadURL: any;
 
-  constructor(public actionSheetContr: ActionSheetController , public Storage: AngularFireStorage, private fire:AngularFirestore, private nav:Router,private chatapp:AuthService,
+  constructor(private camera: Camera, public actionSheetContr: ActionSheetController , public Storage: AngularFireStorage, private fire:AngularFirestore, private nav:Router,private chatapp:AuthService,
     private route:ActivatedRoute,  private afAuth: AngularFireAuth) {
     this.route.queryParams.subscribe(params => {
       console.log(params)
@@ -81,49 +82,51 @@ export class MessagePage implements OnInit {
 
   upload(event) {
     const file= event.target.files[0];
-    this.id = Math.random().toString(36).substring(2);
-    const filepath=this.id;
-    this.ref = this.Storage.ref(filepath);
-    const task = this.Storage.upload(filepath, file);
-  
+   this.id = Math.random().toString(36).substring(2);
+  const filepath=this.id;
+  this.ref = this.Storage.ref(filepath);
+  const task = this.Storage.upload(filepath, file);
   this.uploadState = task.percentageChanges();
   task.snapshotChanges().pipe(
     finalize(() => {
       this.downloadURL = this.ref.getDownloadURL().subscribe(url=>{
          console.log(url);
-         this.afAuth.auth.currentUser.updateProfile({
-          photoURL: url
-         })
-         this.users.update({
-           photoURL: url
-         })
+        this.fire.collection('private').add({
+          Name:this.afAuth.auth.currentUser.displayName,
+          photoURL:url,
+          UserID:this.afAuth.auth.currentUser.uid,
+          sendto:this.singleUser,
+          TimeStamp:firebase.firestore.FieldValue.serverTimestamp(),
+        });
        })
      })
    ).subscribe();
 
-    this.socialSharing.share(this.message, this.subject, this.file, this.link)
-    .then(() => {
-    }).catch(() => {
-    });
-
  } 
 
+ takePhoto() {
+  const options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.FILE_URI,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+  this.camera.getPicture(options).then((imageData) => {
+  
+   let base64Image = 'data:image/jpeg;base64,' + imageData;
+  }, (err) => {
+  
+  });
+}
 
  async presentActionSheet() {
   const actionSheet = await this.actionSheetContr.create({
-    header: 'Albums',
     buttons: [{
-      text: 'Attach picture',
-      icon: 'images',
-      handler: () => {
-        console.log('Delete clicked');
-      }
-    }, {
       text: 'Take picture',
       icon: 'camera',
       handler: () => {
-        
-        console.log('Favorite clicked');
+        console.log('Camera clicked');
+        this.takePhoto()
       }
     }, {
       text: 'Cancel',

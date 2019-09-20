@@ -12,7 +12,25 @@
 
     <div padding text-center>
         <img src="{{photoURL}}">
-        <input type="file" (change)="upload($event)" />
+        <!-- <input type="file" (change)="upload($event)" /> -->
+    </div>
+
+    <div>
+        <div class="login-html">
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"><h6> Upload Image</h6></label>
+            <div class="login-form">
+
+                <div class="sign-up-htm">
+                    <div padding text-center>
+                        <input type="file" (change)="upload($event)" />
+                        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab"><h6>done </h6> </label>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <ion-item color="light">
